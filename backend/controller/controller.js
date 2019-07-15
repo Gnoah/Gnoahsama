@@ -1,5 +1,3 @@
-const express = require('express');
-const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -109,5 +107,3 @@ exports.find = (passport.authenticate('jwt', { session: false }), (req, res) => 
         email: req.user.email
     });
 });
-
-module.exports = router;

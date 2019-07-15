@@ -69,9 +69,8 @@ class Register extends Component {
             <MDBCol md="6" >
               <MDBCard>
                 <MDBCardBody className="mx-4">
-
                   <h2 className="text text-primary">Signup </h2>
-                  <form onSubmit={this.ajout}>
+                  <form onSubmit={ this.handleSubmit }>
                   <div id="name">
                     <MDBInput label="Your Username" group type="text" validate error="wrong" success="right" 
                     className={classnames('form-control form-control-lg', {'is-invalid': errors.name })} name="name"

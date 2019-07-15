@@ -1,6 +1,7 @@
-module.exports = (app) => {
+const express = require('express');
+const app = express.Router();
+const pers = require('../controller/controller');
 
-    const pers = require('../controller/controller');
     app.post('/register', pers.createRegister);
     app.post('/login', pers.createLogin);
     app.get('/me', pers.find);
@@ -8,4 +9,4 @@ module.exports = (app) => {
     // app.get('/user/:photo_profil', pers.lireImage);
     // app.delete('/profil/:profilId', pers.delete);
     
-}
+    module.exports = app;

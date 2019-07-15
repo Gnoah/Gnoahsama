@@ -26,7 +26,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/users', users);
+app.use('/', users);
 
 app.get('/', function(req, res) {
     res.send('hello');
@@ -34,6 +34,6 @@ app.get('/', function(req, res) {
 
 const PORT = 8080;
 
-app.listen(PORT, () => {
+app.listen(8080, () => {
     console.log(`Server is running on PORT ${PORT}`);
 });

@@ -8,7 +8,7 @@ import { setCurrentUser, logoutUser } from './actions/authentication';
 
 import Navbar from './components/Navbar';
 // import Register from './components/Register';
-//import Login from './components/Login';
+// import Login from './components/Login';
 import Home from './components/Home';
 import Signin from './components/signin';
 import Signup from './components/signup';
@@ -38,8 +38,8 @@ class App extends Component {
                 <div className="container">
                   <Route exact path="/register" component={ Signup } />
                   <Route exact path="/login" component={ Signin } />
-                  {/* <Route exact path="/signin" component={ Login } /> */}
-                  {/* <Route exact path="/signup" component={ Signup } /> */}
+                  {/* <Route exact path="/signin" component={ Login } />
+                  <Route exact path="/signup" component={ Register } /> */}
                 </div>
             </div>
           </Router>
