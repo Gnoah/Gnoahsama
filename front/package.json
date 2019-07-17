@@ -5,8 +5,9 @@
   "dependencies": {
     "@material-ui/core": "4.1.0",
     "@material-ui/icons": "4.1.0",
+    "@trendmicro/react-sidenav": "^0.4.5",
     "axios": "^0.18.0",
-    "bootstrap": "^4.1.2",
+    "bootstrap": "^4.3.1",
     "chartist": "0.10.1",
     "classnames": "^2.2.6",
     "history": "4.9.0",
@@ -15,7 +16,7 @@
     "mdbreact": "^4.18.0",
     "perfect-scrollbar": "1.4.0",
     "prop-types": "15.7.2",
-    "react": "^16.4.1",
+    "react": "^16.8.6",
     "react-chartist": "0.13.3",
     "react-confirm-alert": "^2.4.1",
     "react-dom": "^16.4.1",
@@ -25,6 +26,8 @@
     "react-scripts": "1.1.4",
     "react-slideshow-image": "^1.2.0",
     "react-swipeable-views": "0.13.3",
+    "react-transition-group": "^4.2.1",
+    "reactstrap": "^8.0.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
   },

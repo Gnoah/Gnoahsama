@@ -8,15 +8,16 @@ import { setCurrentUser, logoutUser } from './actions/authentication';
 import Acceuil from './components/Acceuil/Acceuil';
 import Footer from './components/Footer/footer';
 import Slide from './components/Acceuil/Slide';
+//import Chart from './components/Produit/charts'
 
 import Navbar from './components/Navbar';
-//import Card from './components/shop/listCard';
-//import Login from './components/Login';
+//import Shopping from './components/Produit/shopping';
 import Home from './components/Home';
 import Signin from './components/signin';
 import Signup from './components/signup';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -43,8 +44,9 @@ class App extends Component {
                 </div>
               </div>
               <Navbar />
-                <Route exact path="/welcome" component={ Home } /> 
-                {/* <Route exact path="/" component={ Card } />  */}
+                <Route exact path="/welcome" component={ Home }/>
+                {/* <Route exact path="/welcome" component={ Shopping }/>
+                <Route exact path="/welcome" component={ Chart } /> */}
                 <div className="">
                   <Route exact path="/register" component={ Signup } />
                   <Route exact path="/login" component={ Signin } />

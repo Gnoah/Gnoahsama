@@ -73,7 +73,7 @@ class Footer extends Component {
                 <div class="col-md-7 col-lg-8">
         
                   <p class="text-center text-md-left">© 2019 Copyright:
-                    <a href="#">
+                    <a href="">
                       <strong> Good Shop</strong>
                     </a>
                   </p>

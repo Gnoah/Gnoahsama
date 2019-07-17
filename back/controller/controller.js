@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateRegisterInput = require('../validation/register');
 const validateLoginInput = require('../validation/login');
-
 const User = require('../models/model');
 
 exports.createRegister = (req, res) => {
@@ -98,6 +97,17 @@ exports.createLogin = (req, res) => {
                         }
                     });
         });
+};
+
+exports.findUser = (req, res) => {   
+    User.find()
+    .then(users => {    
+        res.send(users);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Something wrong while retrieving profils."
+        });
+    });
 };
 
 exports.find = (passport.authenticate('jwt', { session: false }), (req, res) => {
