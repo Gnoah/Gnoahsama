@@ -59,3 +59,59 @@ const EcommercePage = () => {
 }
 
 export default EcommercePage;
+
+
+
+<Container>
+        <MDBRow>
+        <ListGroup>
+          <TransitionGroup className="shopping-list">
+                {items.map(({ _id, nom,article,prix,photo1 }) => (
+              <MDBCol lg="3" md="4" className="mb-lg-0 mb-4">
+                    <MDBCard cascade narrow ecommerce>
+                     <CSSTransition key={_id} timeout={500} classNames="fade">
+                      <ListGroupItem>
+                        <Button className="remove-btn" color="danger" size="sm" onClick={this.onDeleteClick.bind(this, _id)}>&times;</Button>
+                      <MDBCardImage
+                        cascade
+                        src={'http://localhost:8080/user/'+ photo1}
+                        top
+                        alt="sample photo"
+                        overlay="white-slight"
+                      />
+                      <MDBCardBody cascade className="text-center">
+                        <a href="#!" className="grey-text">
+                          <h5>{ nom }</h5>
+                        </a>
+                        <MDBCardTitle>
+                          <strong>
+                            <a href="#!">Good Shop</a>
+                          </strong>
+                        </MDBCardTitle>
+                        <ul className="rating">
+                          <li>
+                            <MDBIcon icon="star" />
+                          </li>
+                        </ul>
+                        <MDBCardText>
+                        </MDBCardText>
+                        <MDBCardFooter className="px-1">
+                          <span className="float-left font-weight-bold">
+                            <strong>{ prix }$</strong>
+                          </span>
+                          <a href="#!" data-toggle="tooltip" data-placement="top" title="Ajouter au panier"> 
+                            <i class="fas fa-shopping-cart grey-text ml-3"></i> 
+                          </a>
+                        </MDBCardFooter>
+                        <h2>{ article }</h2>
+                      </MDBCardBody>
+                      </ListGroupItem>
+                      </CSSTransition>
+                    </MDBCard>
+              </MDBCol>
+              
+                ))}
+          </TransitionGroup>
+        </ListGroup>
+        </MDBRow>
+      </Container>

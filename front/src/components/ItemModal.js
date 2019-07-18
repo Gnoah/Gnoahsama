@@ -70,13 +70,17 @@ class ItemModal extends Component {
   render() {
     return (
       <div>
-        <MDBBtn outline color="secondary"
-          style={{ marginBottom: '2rem' }}
-          onClick={this.toggle}
-        >
-          Add Produit
-        </MDBBtn>
-
+        <div className="row">
+        <div className="col-md-5"></div>
+          <div className="col-md-4">
+            <MDBBtn outline color="secondary"
+              style={{ marginBottom: '2rem' }}
+              onClick={this.toggle}
+            >
+              Add Produit
+            </MDBBtn>
+          </div>
+        </div>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Add List Produit</ModalHeader>
 

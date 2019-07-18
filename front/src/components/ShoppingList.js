@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardFooter, MDBIcon,  MDBBadge, MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBBtn } from "mdbreact";
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { MDBRow,MDBCol,MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardFooter, MDBIcon,  MDBBadge, MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBBtn } from "mdbreact";
+
+import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../actions/itemActions.js';
@@ -20,17 +21,18 @@ class ShoppingList extends Component {
     const { items } = this.props.item;
 
     return (
-      <Container>
-        <MDBRow>
         <ListGroup>
           <TransitionGroup className="shopping-list">
-          <section className="text-center my-5">
-            <MDBCol lg="3" md="6" className="mb-lg-0 mb-4">
+          <MDBRow>
+            <MDBCol md="1"></MDBCol>
                 {items.map(({ _id, nom,article,prix,photo1 }) => (
-              <CSSTransition key={_id} timeout={500} classNames="fade">
-                <ListGroupItem>
-                    <MDBCard cascade narrow ecommerce>
-                    <Button className="remove-btn" color="danger" size="sm" onClick={this.onDeleteClick.bind(this, _id)}>&times;</Button>
+                  <MDBCol lg="3" md="4" className="mb-lg-0 mb-2">
+                    <CSSTransition key={_id} timeout={500} classNames="fade">
+                      <ListGroupItem>
+                      <MDBCard cascade narrow ecommerce>
+                     <CSSTransition key={_id} timeout={500} classNames="fade">
+                      <ListGroupItem>
+                        <Button className="remove-btn" color="danger" size="sm" onClick={this.onDeleteClick.bind(this, _id)}>&times;</Button>
                       <MDBCardImage
                         cascade
                         src={'http://localhost:8080/user/'+ photo1}
@@ -64,19 +66,17 @@ class ShoppingList extends Component {
                         </MDBCardFooter>
                         <h2>{ article }</h2>
                       </MDBCardBody>
+                      </ListGroupItem>
+                      </CSSTransition>
                     </MDBCard>
-                  
-                  
-              
-                </ListGroupItem>
-              </CSSTransition>
+                      </ListGroupItem>
+                    </CSSTransition>
+                  </MDBCol>
                 ))}
-                </MDBCol>
-            </section>
+            
+            </MDBRow>
           </TransitionGroup>
         </ListGroup>
-        </MDBRow>
-      </Container>
     );
   }
 }
