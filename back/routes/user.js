@@ -11,8 +11,9 @@ const produit = require('../controller/produit.controller');
 //profil
     app.post('/produit', produit.create);
     app.get('/produit', produit.findAll);
+    app.get('/user/:photo1', produit.lireImage);
     app.get('/produit/:profilId', produit.findOne);
     app.get('/user/:photo_profil', produit.lireImage);
-    app.delete('/produit/:profilId', produit.delete);
+    app.delete('/produit/:_id', produit.delete);
     
 module.exports = app;

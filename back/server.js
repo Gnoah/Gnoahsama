@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config/dbconfig');
-const methodOverride = require('method-override');
 const fileUpload = require('express-fileupload');
 const app = express();
 
@@ -13,10 +12,6 @@ require('./models/model');
 const users = require('./routes/user'); 
 
 app.use(cors())
-app.use(methodOverride('X-HTTP-Method')) 
-app.use(methodOverride('X-HTTP-Method-Override'))
-app.use(methodOverride('X-Method-Override'))
-app.use(methodOverride('_method'))
 //upload
 app.use(fileUpload());
 app.use('/public', express.static(__dirname + '/public'));

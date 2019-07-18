@@ -1,7 +1,9 @@
 import React from 'react';
-import SideNav from './Dashboard01/sideNav';
-import Produit from './Produit/itemsModal'
-import Profil from './Dashboard01/Profil'
+//import SideNav from './Dashboard01/sideNav';
+//import Produit from './Produit/itemsModal';
+import Test from './Dashboard01/test'
+import Modal from './ItemModal'
+import Shop from './ShoppingList'
 
 class Home extends React.Component {
 
@@ -9,9 +11,9 @@ class Home extends React.Component {
    
     return (
       <div className="">
-          <Profil/>.
-          <SideNav/>
-          <Produit/>
+          <Test/>
+          <Modal />
+          <Shop />
       </div>
     );
   }

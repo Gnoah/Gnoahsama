@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import Avatar from 'react-avatar';
 
 export default class ListTous extends Component {
 
@@ -11,7 +11,7 @@ export default class ListTous extends Component {
 
     }
     componentDidMount() {
-        axios.get('http://localhost:8080/user')
+        axios.get('http://localhost:8080/me')
             .then(response => {
                 console.log('i am a response', response)
                 this.setState({ newUser: response.data });
@@ -23,24 +23,23 @@ export default class ListTous extends Component {
 
     liste() {
         return <div>
-            <div className="table-responsive">
-                <div className="table">
-                    <div>
+            <div className="row">
+                <div className="col-md-3"> </div>
                         {
                             (this.state.newUser.length > 0) ? (this.state.newUser.map((obj) => {
-                                return <tr key={obj._id}>
-                                    <h1>{obj.name}</h1>
-                                    {/* <td>{obj.email}</td>
-                                    <td>{obj.password}</td>
-                                    <td><img width="150px" height="50px" src={'http://localhost:8080/user/'+obj.photo_profil} alt="pdp" />
-                                    </td> */}
-                                    {console.log(obj)}
-                                </tr>
+                                return <div key={obj._id}>
+                                         
+                                            <h1>{obj.name}</h1>
+                                            <div className="col-md-1"></div>
+                                            <div className="col-md-4">
+                                                <Avatar size="300"  src={'http://localhost:8080/username/'+ obj.photo1} round="200px"/>
+                                            </div>
+                                            <div className="col-md-1"></div>
+                                 </div>
 
                             })) : ('')
                         }
-                    </div>
-                </div>
+               <div className="col-md-3"></div>
             </div>
         </div>
     }

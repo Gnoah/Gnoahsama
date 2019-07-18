@@ -17,6 +17,7 @@
     "perfect-scrollbar": "1.4.0",
     "prop-types": "15.7.2",
     "react": "^16.8.6",
+    "react-avatar": "^3.6.0",
     "react-chartist": "0.13.3",
     "react-confirm-alert": "^2.4.1",
     "react-dom": "^16.4.1",

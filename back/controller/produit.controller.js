@@ -14,17 +14,18 @@ exports.create = (req, res) => {
         }else {
             idautom = parseInt(user[user.length - 1]._id) + 1
         }
+        console.log(req.body);
         
         // //images
-        let imageFile = req.files.photo_produit;
-        //console.log('inona ny ato o!'+imageFile)
+        let imageFile = req.files.photo1;
         let nomImage = idautom
-        res.setHeader('Content-Type', 'text/plain');
-
+        console.log(req.files);
+        
         imageFile.mv(`${__dirname}/public/${nomImage }.jpg`, function(err) {
           if (err) {
             return res.status(500).send(err);
           }
+          
         });
     
         //console.log('image file '+req.body.filename)
@@ -34,7 +35,7 @@ exports.create = (req, res) => {
         nom: req.body.nom , 
         article: req.body.article,
         prix: req.body.prix,
-        photo_produit:'' + nomImage +'.jpg'
+        photo1:'' + nomImage +'.jpg'
     });
 
     // Save p in the database
@@ -66,7 +67,7 @@ exports.findAll = (req, res) => {
 
 exports.lireImage =(req, res) =>{
     try {
-        let picture = fs.readFileSync('./controller/public/'+req.params.photo_produit)
+        let picture = fs.readFileSync('./controller/public/'+req.params.photo1)
         res.write(picture)
         res.end()
     } catch (e) {
@@ -138,22 +139,17 @@ exports.update = (req, res) => {
 
 // Delete a Person with the specified PersonId in the request
 exports.delete = (req, res) => {
-    Produit.findByIdAndRemove(req.params._Id)
-    .then(user => {
-        if(!user) {
-            return res.status(404).send({
-                message: "Person not found with id " + req.params._Id
-            });
-        }
-        res.send({message: "Person deleted successfully!"});
-    }).catch(err => {
-        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
-            return res.status(404).send({
-                message: "Person not found with id " + req.params._Id
-            });                
-        }
-        return res.status(500).send({
-            message: "Could not delete Person with id " + req.params._Id
-        });
-    });
-};
+    Produit.findById(req.params._id)
+      .then(produit =>
+        produit.remove().then(() =>
+          res.json({
+            success: true
+          })
+        )
+      )
+      .catch(err =>
+        res.status(404).json({
+          succes: false
+        })
+      );
+  }

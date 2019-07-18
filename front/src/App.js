@@ -8,13 +8,14 @@ import { setCurrentUser, logoutUser } from './actions/authentication';
 import Acceuil from './components/Acceuil/Acceuil';
 import Footer from './components/Footer/footer';
 import Slide from './components/Acceuil/Slide';
-//import Chart from './components/Produit/charts'
+//import Card from './components/shop/card'
 
 import Navbar from './components/Navbar';
-//import Shopping from './components/Produit/shopping';
+import Profil from './components/Dashboard01/Profil';
 import Home from './components/Home';
 import Signin from './components/signin';
 import Signup from './components/signup';
+import Shop from './components/ShoppingList'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -44,13 +45,16 @@ class App extends Component {
                 </div>
               </div>
               <Navbar />
+                <Route exact path="/welcome" component={ Profil } />
                 <Route exact path="/welcome" component={ Home }/>
-                {/* <Route exact path="/welcome" component={ Shopping }/>
-                <Route exact path="/welcome" component={ Chart } /> */}
+                
+                {/* <Route exact path="/welcome" component={ Card }/> */}
+                {/* <Route exact path="/welcome" component={ Chart } /> */}
                 <div className="">
                   <Route exact path="/register" component={ Signup } />
                   <Route exact path="/login" component={ Signin } />
                   <Route exact path="/" component={ Slide } />
+                  <Route exact path="/" component={ Shop } />
                   <Route exact path="/" component={ Acceuil } />
                   
                 </div>
