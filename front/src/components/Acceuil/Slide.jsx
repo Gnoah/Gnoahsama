@@ -15,7 +15,7 @@ class Home extends Component {
             </MDBView>
             <MDBCarouselCaption>
               <Animation type="zoomInUp" duration="3s">
-                <h3 className="h3-responsive">""</h3>
+                <h3 className="h3-responsive">"Welcome to Good Shop"</h3>
                 <p>PC Gamers</p>
               </Animation>
             </MDBCarouselCaption>

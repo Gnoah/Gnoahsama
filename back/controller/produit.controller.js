@@ -21,7 +21,28 @@ exports.create = (req, res) => {
         let nomImage = idautom
         console.log(req.files);
         
-        imageFile.mv(`${__dirname}/public/${nomImage }.jpg`, function(err) {
+        imageFile.mv(`${__dirname}/public/${nomImage}.jpg`, function(err) {
+          if (err) {
+            return res.status(500).send(err);
+          }
+          
+        });
+
+        let imageFile2 = req.files.photo2;
+        let nomImage2 = nomImage+1;
+        console.log(req.files);
+        imageFile2.mv(`${__dirname}/public/${nomImage2}.jpg`, function(err) {
+          if (err) {
+            return res.status(500).send(err);
+          }
+          
+        });
+
+        let imageFile3 = req.files.photo3;
+        nomImage3 = nomImage+2;
+        console.log(req.files);
+        
+        imageFile3.mv(`${__dirname}/public/${nomImage3}.jpg`, function(err) {
           if (err) {
             return res.status(500).send(err);
           }
@@ -35,7 +56,9 @@ exports.create = (req, res) => {
         nom: req.body.nom , 
         article: req.body.article,
         prix: req.body.prix,
-        photo1:'' + nomImage +'.jpg'
+        photo1:'' + nomImage +'.jpg',
+        photo2:'' + nomImage2 +'.jpg',
+        photo3:'' + nomImage3 +'.jpg'
     });
 
     // Save p in the database
@@ -67,7 +90,7 @@ exports.findAll = (req, res) => {
 
 exports.lireImage =(req, res) =>{
     try {
-        let picture = fs.readFileSync('./controller/public/'+req.params.photo1)
+        let picture = fs.readFileSync('./controller/public/'+req.params.photo)
         res.write(picture)
         res.end()
     } catch (e) {

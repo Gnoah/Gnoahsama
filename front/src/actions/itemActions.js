@@ -12,56 +12,35 @@ export const getItems = () => dispatch => {
   );
 };
 
-// export function uploadFile(file) {
-
-//   return dispatch => {
-//     dispatch({ type: UPLOAD_REQUEST })
-
-//     return request.post('http://localhost:8080/produit')
-//       .attach('file', file, file.name)
-//       .then(res => {
-//         if (!res.ok) {
-//           dispatch({ type: UPLOAD_FAILURE })
-//           dispatch(showNotification({
-//             status: 'err',
-//             text: 'something going wrong',
-//           }))
-//         } else {
-//           const data = JSON.parse(res.text)
-//           dispatch({
-//             type: UPLOAD_SUCCESS,
-//             data,
-//           })
-//           dispatch(showNotification({
-//             status: 'ok',
-//             text: `File uploaded. Key: ${data.key}`,
-//           }))
-//         }
-//       }, err => {
-//         dispatch({ type: UPLOAD_FAILURE })
-//         dispatch(showNotification({
-//           status: 'err',
-//           text: err.message,
-//         }))
-//       })
-//   }
-// }
-
-export const addItem = item => dispatch => {
-  axios.post('http://localhost:8080/produit', item).then(res =>{
-    res.json().then((body) => {
-      this.props.photo1 =`http://localhost:8080/produit/${body.photo1}`;
-      console.log('sary',body.photo1);
-
-    });
-    dispatch({
-      type: ADD_ITEM,
-      payload: res.data
-    })
-  }
-   
-  );
+export const addItem =  item => dispatch =>   (newProject) => {
+  const data = new FormData();
+    data.append('photo1', newProject.files[0]);
+    data.append('nom',newProject.nom);
+    data.append('article',newProject.article);
+    data.append('prix',newProject.prix)
+  
+  return axios.post(`http://localhost:8080/produit`,item, data, {
+    headers: {
+      'Content-Type': 'multipart/data',
+    },
+  }).then(res =>{
+         dispatch({
+           type: ADD_ITEM,
+           payload: res.data
+       })
+  });
 };
+
+// export const addItem = item => dispatch => {
+//   axios.post('http://localhost:8080/produit', item).then(res =>{
+//     dispatch({
+//       type: ADD_ITEM,
+//       payload: res.data
+//     })
+//   }
+   
+//   );
+// };
 
 export const deleteItem = id => dispatch => {
   axios.delete(`http://localhost:8080/produit/${id}`).then(res =>

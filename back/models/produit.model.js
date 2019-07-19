@@ -6,7 +6,9 @@ const UserSchema = mongoose.Schema({
     nom: { type: String, required: true},
     article: { type: String, required: true},
     prix: { type: Number, required: true },
-    photo1 :String
+    photo1 :String,
+    photo2 : String,
+    photo3 : String
 },
 {
     timestamps: true

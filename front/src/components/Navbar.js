@@ -38,7 +38,7 @@ class Navbar extends Component {
         </ul>
       )
         return(
-            <MDBNavbar color="indigo" dark expand="md">
+            <MDBNavbar color="blue" dark expand="md">
                 <MDBNavbarBrand>
                     <strong className="white-text">Good Shop</strong>
                 </MDBNavbarBrand>

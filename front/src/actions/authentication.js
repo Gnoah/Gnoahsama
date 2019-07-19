@@ -20,7 +20,7 @@ export const loginUser = (user) => dispatch => {
     axios.post('http://localhost:8080/login', user)
             .then(res => {
                 const { token } = res.data;
-                localStorage.setItem('jwtToken', token);
+                localStorage.setItem('jwtToken', res.data.name);
                 setAuthToken(token);
                 const decoded = jwt_decode(token);
                 dispatch(setCurrentUser(decoded));

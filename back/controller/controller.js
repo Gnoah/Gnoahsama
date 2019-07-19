@@ -85,6 +85,7 @@ exports.createLogin = (req, res) => {
                                 if(err) console.error('There is some error in token', err);
                                 else {
                                     res.json({
+                                        name: user.name,
                                         success: true,
                                         token: `Bearer ${token}`
                                     });

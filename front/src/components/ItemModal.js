@@ -22,7 +22,9 @@ class ItemModal extends Component {
     nom: '',
     article: '',
     prix:'',
-    photo1:''
+    photo1:'',
+    photo2: '',
+    photo3: ''
   };
   this.onChange = this.onChange.bind(this);
   this.handleUploadImage = this.handleUploadImage.bind(this);
@@ -40,18 +42,44 @@ class ItemModal extends Component {
 
   handleUploadImage(ev) {
     ev.preventDefault();
-    const newItem = {
-      nom: this.state.nom,
-      article: this.state.article,
-      prix: this.state.prix,
-      photo1: this.uploadInput.files[0]
-     };
-    this.props.addItem(newItem);
 
-    this.toggle();
-    
+    const data = new FormData();
+    data.append('photo1', this.uploadInput.files[0]);
+    data.append('photo2', this.uploadInput1.files[0]);
+    data.append('photo3', this.uploadInput2.files[0]);
+    data.append('nom',this.state.nom);
+    data.append('article',this.state.article);
+    data.append('prix',this.state.prix)
+
+    fetch('http://localhost:8080/produit', {
+      method: 'POST',
+      body: data,
+    }).then((response) => {
+      response.json().then((body) => {
+        this.setState({ photo1: `http://localhost:8080/produit/${body.photo1}` });
+        console.log('sary',body.photo1);
+  
+      });
+      
+    });
+       this.toggle();
   }
+  // handleUploadImage(ev) {
+  //   ev.preventDefault();
+  //   const newItem = {
+  //     photo1: this.uploadInput.files[0],
+  //     nom: this.state.nom,
+  //     article: this.state.article,
+  //     prix: this.state.prix
+      
+  //    };
+  //   console.log(this.uploadInput.files);
+  //   this.props.addItem(newItem);
+  //   this.toggle();
+  // }
 
+ 
+      
   // onSubmit = e => {
   //   e.preventDefault();
 
@@ -92,6 +120,8 @@ class ItemModal extends Component {
                 <Input type="text" name="article" id="item"  placeholder="Add article" onChange={this.onChange}/>
                 <Input type="number" name="prix" id="item"  placeholder="Add prix" onChange={this.onChange}/>
                 <input ref={(ref) => { this.uploadInput = ref; }} type="file" name="photo1"/>
+                <input ref={(ref) => { this.uploadInput1 = ref; }} type="file" name="photo2"/>
+                <input ref={(ref) => { this.uploadInput2 = ref; }} type="file" name="photo3"/>
                 <Button color="blue" style={{ marginTop: '2rem' }} block>
                   Add Item
                 </Button>
